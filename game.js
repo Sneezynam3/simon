@@ -22,9 +22,9 @@ const startButton = document.querySelector("#start");
 strictButton.addEventListener('click', (event) => {
     console.log("checked")
     if (strictButton.checked == true) {
-        strict == true;
+        strict = true;
     } else {
-        strict == false;
+        strict = false;
     }
 });
 
@@ -36,11 +36,11 @@ onButton.addEventListener('click', (event) => {
         on = false;
         turnCounter.innerHTML = "";
         clearColor();
-        clearInterval(intervalId)
+        clearInterval(intervalId);
     }
 });
 
-strictButton.addEventListener('click', (event) => {
+startButton.addEventListener('click', (event) => {
     if(on || win) {
         play();
     }
@@ -58,5 +58,67 @@ function play () {
   for (var i=0; i < 20; i++) {
       order.push(Math.floor(Math.random() *4) + 1)
   }
+  compTurn = true;
   console.log(order)
+
+  intervalId = setInterval(gameTurn, 800);
 }
+
+function gameTurn () {
+    on = false;
+
+    if (flash == turn) {
+        clearInterval(intervalId);
+        compTurn = false;
+        clearColor();
+        on = true;
+    }
+
+    if (compTurn) {
+        clearColor();
+        setTimeout(() => {
+            if(order[flash] == 1) one();
+            if(order[flash] == 2) two();
+            if(order[flash] == 3) three();
+            if(order[flash] == 4) four();
+            flash++;
+        }, 200);
+    }
+}
+
+function one() {
+    if (noise) {
+      let audio = document.getElementById("clip1");
+      audio.play();
+    }
+    noise = true;
+    topLeft.style.backgroundColor = "lightgreen";
+  }
+  
+  function two() {
+    if (noise) {
+      let audio = document.getElementById("clip2");
+      audio.play();
+    }
+    noise = true;
+    topRight.style.backgroundColor = "tomato";
+  }
+  
+  function three() {
+    if (noise) {
+      let audio = document.getElementById("clip3");
+      audio.play();
+    }
+    noise = true;
+    bottomLeft.style.backgroundColor = "yellow";
+  }
+  
+  function four() {
+    if (noise) {
+      let audio = document.getElementById("clip4");
+      audio.play();
+    }
+    noise = true;
+    bottomRight.style.backgroundColor = "lightskyblue";
+  }
+  

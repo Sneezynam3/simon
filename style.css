@@ -1,5 +1,5 @@
 body {
-    background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/nasty_fabric.png)
+    background-color: blanchedalmond;
   }
   
   .toggle {
@@ -127,7 +127,7 @@ body {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
   }
-  
+
   #bottomright {
     position: absolute;
     height: 250px;
