@@ -18,3 +18,7 @@ const bottomRight = document.querySelector("#bottomRight");
 const strictButton = document.querySelector("#strict");
 const onButton = document.querySelector("#on");
 const startButton = document.querySelector("#start");
+
+strictButton.addEventListener('change', (event) => {
+    console.log("checked")
+})
